@@ -10,9 +10,7 @@ go get github.com/wellsivi/go-collection
 
 ## Usage
 
-```python
-import foobar
-
+```go
 import (
     "github.com/wellsivi/go-collection"
 )
