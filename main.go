@@ -1,52 +1,52 @@
 package collection
 
-type Collection struct {
+type Array struct {
 	Items []map[string]interface{}
 	Pluck []string
 	Skip  int
 	Limit int
 }
 
-func (Collection *Collection) Get() []map[string]interface{} {
-	items := Collection.Items
+func (Array *Array) Get() []map[string]interface{} {
+	items := Array.Items
 
-	if Collection.Limit > 0 && Collection.Skip > 0 {
-		items = Collection.paginate(items)
+	if Array.Limit > 0 && Array.Skip > 0 {
+		items = Array.paginate(items)
 	}
 
-	if Collection.Pluck != nil {
-		items = Collection.pluck(items)
+	if Array.Pluck != nil {
+		items = Array.pluck(items)
 	}
 
 	return items
 }
 
-func (Collection *Collection) paginate(Items []map[string]interface{}) []map[string]interface{} {
+func (Array *Array) paginate(Items []map[string]interface{}) []map[string]interface{} {
 	itemsLength := len(Items)
 
-	start := Collection.Skip * Collection.Limit
+	start := Array.Skip * Array.Limit
 	if start > itemsLength {
 		start = itemsLength
 	}
 
-	end := start + Collection.Limit
+	end := start + Array.Limit
 	if end > itemsLength {
 		end = itemsLength
 	}
 
-	return Collection.Items[start:end]
+	return Array.Items[start:end]
 }
 
-func (Collection *Collection) pluck(Items []map[string]interface{}) []map[string]interface{} {
+func (Array *Array) pluck(Items []map[string]interface{}) []map[string]interface{} {
 	var pluckedItems []map[string]interface{}
 
 	for _, itemValue := range Items {
 		newItemValue := make(map[string]interface{})
 
 		for fieldKey, fieldValue := range itemValue {
-			set := make(map[string]struct{}, len(Collection.Pluck))
+			set := make(map[string]struct{}, len(Array.Pluck))
 
-			for _, s := range Collection.Pluck {
+			for _, s := range Array.Pluck {
 				set[s] = struct{}{}
 			}
 
