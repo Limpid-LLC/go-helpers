@@ -14,19 +14,19 @@ go get github.com/Limpid-LLC/go-helpers
 import "github.com/Limpid-LLC/go-helpers"
 ```
 
-### Collection
+### Array
 
 ```go
 func main () {
 
-    Collection = helpers.Collection{
+    Array = helpers.Array{
         Items:  [], // your array
         Skip:   1, // searching page
         Limit:  10, // limit items for select
         Pluck:  ["name", "age"], // fields for showing
     }
-    
-    Collection.Get() // Return items from 0 to 10 with name and age fields
+
+    Array.Get() // Return items from 0 to 10 with name and age fields
     
 }
 ```
