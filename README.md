@@ -5,17 +5,21 @@ This package support you with paginate, pluck and convert your array
 ## Install
 
 ```bash
-go get github.com/wellsivi/go-collection
+go get github.com/Limpid-LLC/go-helpers
 ```
 
 ## Usage
 
 ```go
-import "github.com/wellsivi/go-collection"
+import "github.com/Limpid-LLC/go-helpers"
+```
 
+### Collection
+
+```go
 func main () {
 
-    Collection = collection.Array{
+    Collection = helpers.Collection{
         Items:  [], // your array
         Skip:   1, // searching page
         Limit:  10, // limit items for select
