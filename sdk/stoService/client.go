@@ -11,7 +11,7 @@ type StoClient struct {
 
 func Client() *StoClient {
 	return &StoClient{
-		Client: sdk.Client{Port: "9180"},
+		Client: sdk.Client{Url: "http://devops.f1xiq.com:9180"},
 	}
 }
 

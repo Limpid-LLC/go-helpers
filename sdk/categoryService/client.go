@@ -11,7 +11,7 @@ type CategoryClient struct {
 
 func Client() *CategoryClient {
 	return &CategoryClient{
-		Client: sdk.Client{Port: "8580"},
+		Client: sdk.Client{Url: "http://devops.f1xiq.com:8580"},
 	}
 }
 
