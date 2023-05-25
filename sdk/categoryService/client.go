@@ -1,0 +1,77 @@
+package categoryService
+
+import (
+	"encoding/json"
+	"github.com/Limpid-LLC/go-helpers/sdk"
+)
+
+type CategoryClient struct {
+	Client sdk.Client
+}
+
+func Client() *CategoryClient {
+	return &CategoryClient{
+		Client: sdk.Client{Port: "8580"},
+	}
+}
+
+func (CategoryClient *CategoryClient) FindService(ServiceId string) (*Service, error) {
+	Select := map[string]interface{}{
+		"type":        "service",
+		"internal_id": ServiceId,
+	}
+
+	Services, Err := CategoryClient.GetServices(Select)
+	if Err != nil {
+		return nil, Err
+	}
+
+	// @TODO Add validation if sto not found
+	return &Services[0], nil
+}
+
+func (CategoryClient *CategoryClient) GetServices(CustomSelect map[string]interface{}) ([]Service, error) {
+	FunctionSelect := map[string]interface{}{
+		"type": "service",
+	}
+
+	ClientRequestBody := sdk.ClientRequestBody{
+		Method: "index_service",
+		Data: map[string]interface{}{
+			"select": mergeMaps(FunctionSelect, CustomSelect),
+		},
+	}
+
+	ClientResponseBody, Err := CategoryClient.Client.SendPostRequest(ClientRequestBody)
+	if Err != nil {
+		return nil, Err
+	}
+
+	var Services []Service
+
+	ServicesJson, Err := json.Marshal(ClientResponseBody.Result)
+	if Err != nil {
+		return nil, Err
+	}
+
+	Err = json.Unmarshal(ServicesJson, &Services)
+	if Err != nil {
+		return nil, Err
+	}
+
+	return Services, nil
+}
+
+func mergeMaps[K comparable, V any](m1 map[K]V, m2 map[K]V) map[K]V {
+	merged := make(map[K]V)
+
+	for key, value := range m1 {
+		merged[key] = value
+	}
+
+	for key, value := range m2 {
+		merged[key] = value
+	}
+
+	return merged
+}
