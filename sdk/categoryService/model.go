@@ -11,12 +11,14 @@ type Names struct {
 }
 
 type Category struct {
+	Id       string `json:"internal_id"`
 	NameJson Names  `json:"names"`
 	Type     string `json:"type"`
 	Alias    string `json:"alias"`
 }
 
 type Service struct {
+	Id            string   `json:"internal_id"`
 	Names         Names    `json:"names"`
 	Type          string   `json:"type"`
 	Price         Price    `json:"price"`
