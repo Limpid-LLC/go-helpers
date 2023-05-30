@@ -11,7 +11,7 @@ type PostClient struct {
 
 func Client() *PostClient {
 	return &PostClient{
-		Client: sdk.Client{Url: "http://host.docker.internal:8680"},
+		Client: sdk.Client{Url: "http://devops.f1xiq.com:8680"},
 	}
 }
 
