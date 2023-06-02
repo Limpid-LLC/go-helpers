@@ -7,17 +7,19 @@ type Sto struct {
 }
 
 type CategoryWithServices struct {
-	Id               string        `json:"CategoryID"`
-	Alias            string        `json:"CategoryAlias"`
-	Name             string        `json:"CategoryName"`
-	ExcludedServices []string      `json:"ExcludedServices"`
-	IncludedServices []string      `json:"IncludedServices"`
-	IsServicesAll    bool          `json:"IsServicesAll"`
-	CustomService    CustomService `json:"ServicesCustom"`
+	Id               string          `json:"CategoryID"`
+	Alias            string          `json:"CategoryAlias"`
+	Name             string          `json:"CategoryName"`
+	ExcludedServices []string        `json:"ExcludedServices"`
+	IncludedServices []string        `json:"IncludedServices"`
+	IsServicesAll    bool            `json:"IsServicesAll"`
+	CustomService    []CustomService `json:"ServicesCustom"`
 }
 
 type CustomService struct {
-	Id                 string `json:"ServiceID"`
+	CustomId           string `json:"CustomId"`
 	Name               string `json:"Name"`
 	ReferenceServiceId string `json:"ReferenceServiceId"`
+	Id                 string `json:"CategoryId"`
+	ChildServices      string `json:"ChildServices"`
 }
