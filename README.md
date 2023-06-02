@@ -8,6 +8,12 @@ This package support you with paginate, pluck and convert your array
 go get github.com/Limpid-LLC/go-helpers
 ```
 
+## Update version
+
+```bash
+go get -u github.com/Limpid-LLC/go-helpers@v1.0.5
+```
+
 ## Usage
 
 ```go
