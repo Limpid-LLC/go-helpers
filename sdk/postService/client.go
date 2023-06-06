@@ -2,6 +2,7 @@ package postService
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/Limpid-LLC/go-helpers/sdk"
 )
 
@@ -20,13 +21,16 @@ func (PostClient *PostClient) FindPost(ServiceId string) (*Post, error) {
 		"internal_id": ServiceId,
 	}
 
-	Services, Err := PostClient.GetPosts(Select)
+	Posts, Err := PostClient.GetPosts(Select)
 	if Err != nil {
 		return nil, Err
 	}
 
-	// @TODO Add validation if sto not found
-	return &Services[0], nil
+	if len(Posts) == 0 {
+		return nil, errors.New("post not found")
+	}
+
+	return &Posts[0], nil
 }
 
 func (PostClient *PostClient) GetPosts(CustomSelect map[string]interface{}) ([]Post, error) {

@@ -2,6 +2,7 @@ package categoryService
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/Limpid-LLC/go-helpers/sdk"
 )
 
@@ -26,7 +27,10 @@ func (CategoryClient *CategoryClient) FindService(ServiceId string) (*Service, e
 		return nil, Err
 	}
 
-	// @TODO Add validation if sto not found
+	if len(Services) == 0 {
+		return nil, errors.New("post not found")
+	}
+
 	return &Services[0], nil
 }
 

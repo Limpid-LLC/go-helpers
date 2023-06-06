@@ -2,6 +2,7 @@ package stoService
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/Limpid-LLC/go-helpers/sdk"
 )
 
@@ -28,6 +29,10 @@ func (StoClient *StoClient) Find(StoId string) (*Sto, error) {
 	Stos, Err := StoClient.Get(ClientRequestBody)
 	if Err != nil {
 		return nil, Err
+	}
+
+	if len(Stos) == 0 {
+		return nil, errors.New("sto not found")
 	}
 
 	// @TODO Add validation if sto not found
