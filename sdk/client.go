@@ -18,7 +18,7 @@ type ClientRequestBody struct {
 }
 
 type ClientResponseBody struct {
-	Result []map[string]interface{} `json:"result"`
+	Result any `json:"result"`
 }
 
 func (Client *Client) SendPostRequest(ClientRequestBody ClientRequestBody) (*ClientResponseBody, error) {
