@@ -21,7 +21,6 @@ type CustomService struct {
 	Name               string   `json:"name"`
 	ReferenceServiceId string   `json:"reference_service_id"`
 	Id                 string   `json:"category_id"`
-	ChildServices      string   `json:"child_services"`
 	Price              Price    `json:"price"`
 	Duration           Duration `json:"duration"`
 }
