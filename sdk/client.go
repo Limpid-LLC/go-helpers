@@ -13,8 +13,9 @@ type Client struct {
 }
 
 type ClientRequestBody struct {
-	Method string      `json:"method"`
-	Data   interface{} `json:"data"`
+	Method   string      `json:"method"`
+	Data     interface{} `json:"data"`
+	Metadata interface{} `json:"metadata"`
 }
 
 type ClientResponseBody struct {
