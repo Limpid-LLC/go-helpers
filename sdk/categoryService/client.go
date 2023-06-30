@@ -10,9 +10,12 @@ type CategoryClient struct {
 	Client sdk.Client
 }
 
-func Client() *CategoryClient {
+func Client(metadata interface{}) *CategoryClient {
 	return &CategoryClient{
-		Client: sdk.Client{Url: "http://devops.f1xiq.com:8580"},
+		Client: sdk.Client{
+			Url:      "http://devops.f1xiq.com:8580",
+			Metadata: metadata,
+		},
 	}
 }
 

@@ -8,8 +8,8 @@ import (
 )
 
 type Client struct {
-	Url   string
-	Token string
+	Url      string
+	Metadata interface{} `json:"metadata"`
 }
 
 type ClientRequestBody struct {
@@ -23,6 +23,8 @@ type ClientResponseBody struct {
 }
 
 func (Client *Client) SendPostRequest(ClientRequestBody ClientRequestBody) (*ClientResponseBody, error) {
+	ClientRequestBody.Metadata = Client.Metadata
+
 	// Encode request struct to json string
 	ClientRequestBodyJson, Err := json.Marshal(ClientRequestBody)
 	if Err != nil {
@@ -34,9 +36,6 @@ func (Client *Client) SendPostRequest(ClientRequestBody ClientRequestBody) (*Cli
 	if Err != nil {
 		return nil, Err
 	}
-
-	// Add auth token to request
-	Request.Header.Set("Token", Client.Token)
 
 	// Do request and select response
 	Response, Err := http.DefaultClient.Do(Request)

@@ -10,9 +10,12 @@ type PostClient struct {
 	Client sdk.Client
 }
 
-func Client() *PostClient {
+func Client(metadata interface{}) *PostClient {
 	return &PostClient{
-		Client: sdk.Client{Url: "http://devops.f1xiq.com:8680"},
+		Client: sdk.Client{
+			Url:      "http://devops.f1xiq.com:8680",
+			Metadata: metadata,
+		},
 	}
 }
 

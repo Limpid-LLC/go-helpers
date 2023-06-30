@@ -10,9 +10,12 @@ type StoClient struct {
 	Client sdk.Client
 }
 
-func Client() *StoClient {
+func Client(metadata interface{}) *StoClient {
 	return &StoClient{
-		Client: sdk.Client{Url: "http://devops.f1xiq.com:9180"},
+		Client: sdk.Client{
+			Url:      "http://devops.f1xiq.com:9180",
+			Metadata: metadata,
+		},
 	}
 }
 

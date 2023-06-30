@@ -10,9 +10,12 @@ type AuthClient struct {
 	Client sdk.Client
 }
 
-func Client() *AuthClient {
+func Client(metadata interface{}) *AuthClient {
 	return &AuthClient{
-		Client: sdk.Client{Url: "http://devops.f1xiq.com:9001"},
+		Client: sdk.Client{
+			Url:      "http://devops.f1xiq.com:9001",
+			Metadata: metadata,
+		},
 	}
 }
 
