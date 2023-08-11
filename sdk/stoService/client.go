@@ -19,6 +19,18 @@ func Client(metadata interface{}) *StoClient {
 	}
 }
 
+func New(url string) *StoClient {
+	return &StoClient{
+		Client: sdk.Client{
+			Url: url,
+		},
+	}
+}
+
+func (StoClient *StoClient) SetMetadata(metadata interface{}) {
+	StoClient.Client.Metadata = metadata
+}
+
 func (StoClient *StoClient) Find(StoId string) (*Sto, error) {
 	ClientRequestBody := sdk.ClientRequestBody{
 		Method: "index",

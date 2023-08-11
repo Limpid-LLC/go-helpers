@@ -19,6 +19,18 @@ func Client(metadata interface{}) *AuthClient {
 	}
 }
 
+func New(url string) *AuthClient {
+	return &AuthClient{
+		Client: sdk.Client{
+			Url: url,
+		},
+	}
+}
+
+func (AuthClient *AuthClient) SetMetadata(metadata interface{}) {
+	AuthClient.Client.Metadata = metadata
+}
+
 func (AuthClient *AuthClient) FindRole(data map[string]any) (*Role, error) {
 	Roles, Err := AuthClient.GetRoles(data)
 	if Err != nil {
