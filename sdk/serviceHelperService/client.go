@@ -18,6 +18,18 @@ func Client(metadata interface{}) *ServiceHelperClient {
 	}
 }
 
+func New(url string) *ServiceHelperClient {
+	return &ServiceHelperClient{
+		Client: sdk.Client{
+			Url: url,
+		},
+	}
+}
+
+func (ServiceHelperClient *ServiceHelperClient) SetMetadata(metadata interface{}) {
+	ServiceHelperClient.Client.Metadata = metadata
+}
+
 func (ServiceHelperClient *ServiceHelperClient) GetServices(CustomSelect map[string]interface{}) ([]Service, error) {
 	ClientRequestBody := sdk.ClientRequestBody{
 		Method: "get",
