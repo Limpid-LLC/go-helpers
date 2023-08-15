@@ -30,11 +30,12 @@ func (ServiceHelperClient *ServiceHelperClient) SetMetadata(metadata interface{}
 	ServiceHelperClient.Client.Metadata = metadata
 }
 
-func (ServiceHelperClient *ServiceHelperClient) GetServices(CustomSelect map[string]interface{}) ([]Service, error) {
+func (ServiceHelperClient *ServiceHelperClient) GetServices(CustomSelect map[string]interface{}, stoId string) ([]Service, error) {
 	ClientRequestBody := sdk.ClientRequestBody{
 		Method: "get",
 		Data: map[string]interface{}{
 			"select": CustomSelect,
+			"sto_id": stoId,
 		},
 	}
 
