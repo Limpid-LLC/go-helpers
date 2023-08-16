@@ -19,6 +19,18 @@ func Client(metadata interface{}) *CategoryClient {
 	}
 }
 
+func New(url string) *CategoryClient {
+	return &CategoryClient{
+		Client: sdk.Client{
+			Url: url,
+		},
+	}
+}
+
+func (CategoryClient *CategoryClient) SetMetadata(metadata interface{}) {
+	CategoryClient.Client.Metadata = metadata
+}
+
 func (CategoryClient *CategoryClient) FindService(ServiceId string) (*Service, error) {
 	Select := map[string]interface{}{
 		"type":        "service",

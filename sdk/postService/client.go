@@ -19,6 +19,18 @@ func Client(metadata interface{}) *PostClient {
 	}
 }
 
+func New(url string) *PostClient {
+	return &PostClient{
+		Client: sdk.Client{
+			Url: url,
+		},
+	}
+}
+
+func (PostClient *PostClient) SetMetadata(metadata interface{}) {
+	PostClient.Client.Metadata = metadata
+}
+
 func (PostClient *PostClient) FindPost(ServiceId string) (*Post, error) {
 	Select := map[string]interface{}{
 		"internal_id": ServiceId,

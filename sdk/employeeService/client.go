@@ -18,7 +18,19 @@ func Client(metadata interface{}) *EmployeeClient {
 	}
 }
 
-func (PostClient *EmployeeClient) GetEmployees(CustomSelect map[string]interface{}) ([]Employee, error) {
+func New(url string) *EmployeeClient {
+	return &EmployeeClient{
+		Client: sdk.Client{
+			Url: url,
+		},
+	}
+}
+
+func (EmployeeClient *EmployeeClient) SetMetadata(metadata interface{}) {
+	EmployeeClient.Client.Metadata = metadata
+}
+
+func (EmployeeClient *EmployeeClient) GetEmployees(CustomSelect map[string]interface{}) ([]Employee, error) {
 	ClientRequestBody := sdk.ClientRequestBody{
 		Method: "get",
 		Data: map[string]interface{}{
@@ -26,7 +38,7 @@ func (PostClient *EmployeeClient) GetEmployees(CustomSelect map[string]interface
 		},
 	}
 
-	ClientResponseBody, Err := PostClient.Client.SendPostRequest(ClientRequestBody)
+	ClientResponseBody, Err := EmployeeClient.Client.SendPostRequest(ClientRequestBody)
 	if Err != nil {
 		return nil, Err
 	}
