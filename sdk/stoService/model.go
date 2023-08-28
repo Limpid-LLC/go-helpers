@@ -17,12 +17,15 @@ type CategoryWithServices struct {
 }
 
 type CustomService struct {
-	CustomId           string   `json:"custom_id"`
-	Name               string   `json:"name"`
-	ReferenceServiceId string   `json:"reference_service_id"`
-	Id                 string   `json:"category_id"`
-	Price              Price    `json:"price"`
-	Duration           Duration `json:"duration"`
+	CustomId                string   `json:"custom_id"`
+	Name                    string   `json:"name"`
+	ReferenceServiceId      string   `json:"reference_service_id"`
+	Id                      string   `json:"category_id"`
+	Price                   Price    `json:"price"`
+	Duration                Duration `json:"duration"`
+	OriginalName            string   `json:"original_name"`
+	OriginalId              string   `json:"original_id"`
+	CustomServiceInternalId string   `json:"custom_service_internal_id"`
 }
 
 type Price struct {
