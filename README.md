@@ -11,7 +11,7 @@ go get github.com/Limpid-LLC/go-helpers
 ## Update version
 
 ```bash
-go get -u github.com/Limpid-LLC/go-helpers@v1.0.5
+go get -u github.com/Limpid-LLC/go-helpers@v1.0.22
 ```
 
 ## Usage

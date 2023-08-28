@@ -34,8 +34,9 @@ func (ServiceHelperClient *ServiceHelperClient) GetServices(CustomSelect map[str
 	ClientRequestBody := sdk.ClientRequestBody{
 		Method: "get",
 		Data: map[string]interface{}{
-			"select": CustomSelect,
-			"sto_id": stoId,
+			"select":        CustomSelect,
+			"sto_id":        stoId,
+			"without_group": true,
 		},
 	}
 

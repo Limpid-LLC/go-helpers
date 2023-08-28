@@ -11,25 +11,15 @@ type Names struct {
 }
 
 type Service struct {
-	Id            string         `json:"internal_id"`
-	ServiceId     string         `json:"service_id"`
-	StoId         string         `json:"sto_id"`
-	Names         Names          `json:"names"`
-	Type          string         `json:"type"`
-	Price         Price          `json:"price"`
-	Duration      Duration       `json:"duration"`
-	VehicleTypes  []string       `json:"vehicleTypes"`
-	CategoryAlias []string       `json:"categoryAlias"`
-	ChildServices []ChildService `json:"child_services"`
-}
-
-type ChildService struct {
-	Id                  string   `json:"internal_id"`
-	Names               Names    `json:"names"`
-	CategoryAlias       []string `json:"categoryAlias"`
-	CustomId            string   `json:"custom_id"`
-	Name                string   `json:"name"`
-	CustomCategoryAlias string   `json:"category_aliases"`
+	Id            string   `json:"internal_id"`
+	ServiceId     string   `json:"service_id"`
+	StoId         string   `json:"sto_id"`
+	Names         Names    `json:"names"`
+	Type          string   `json:"type"`
+	Price         Price    `json:"price"`
+	Duration      Duration `json:"duration"`
+	VehicleTypes  []string `json:"vehicleTypes"`
+	CategoryAlias []string `json:"categoryAlias"`
 }
 
 type Price struct {
